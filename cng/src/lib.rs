@@ -6,6 +6,8 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::path::Path;
 
+pub mod ping;
+pub mod coins;
 
 #[allow(dead_code)]
 #[derive(Deserialize, Debug)]
@@ -54,6 +56,7 @@ impl Trending {
         Ok(body)
     }
 }
+
 
 
 #[cfg(test)]
