@@ -13,8 +13,11 @@ async fn main() -> Result<(), reqwest::Error> {
                 println!("{:.8} -> ₿ {:.8}", v.1.name, v.1.price_btc);
             }
         }
-        info!("Fetching coins list...");
-        println!("{:#?}", cng::coins::list::List::from_string(&cng::coins::list::List::fetch(false).await?));
+        // info!("Fetching coins list...");
+        // println!("{:#?}", cng::coins::list::List::from_string(&cng::coins::list::List::fetch(false).await?));
+
+        info!("Fetching supported_vs_currencies...");
+        println!("{:#?}", cng::simple::supported_vs_currencies::from_string(&cng::simple::supported_vs_currencies::fetch().await?));
     } else {
         warn!("Couldn't connect to the server");
     }

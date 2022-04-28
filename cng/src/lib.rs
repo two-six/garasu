@@ -8,6 +8,7 @@ use std::path::Path;
 
 pub mod ping;
 pub mod coins;
+pub mod simple;
 
 #[allow(dead_code)]
 #[derive(Deserialize, Debug)]
