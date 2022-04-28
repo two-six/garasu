@@ -29,7 +29,7 @@ impl List {
         Ok(body)
     }
 
-    pub fn from_string(s: &String) -> Result<Vec<List>, Box<dyn Error>> {
+    pub fn from_str(s: &str) -> Result<Vec<List>, Box<dyn Error>> {
         let reader = BufReader::new(s.as_bytes());
         let u: Vec<List> = serde_json::from_reader(reader)?;
         Ok(u)

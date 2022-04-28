@@ -34,7 +34,7 @@ pub struct Item {
 
 impl Trending {
     #[allow(dead_code)]
-    pub fn from_string(s: &String) -> Result<Trending, Box<dyn Error>> {
+    pub fn from_str(s: &str) -> Result<Trending, Box<dyn Error>> {
         let reader = BufReader::new(s.as_bytes());
         let u: Trending = serde_json::from_reader(reader)?;
         Ok(u)
@@ -65,7 +65,7 @@ mod tests {
     use super::*;
     #[test]
     fn should_fail() {
-        assert_eq!(Trending::from_string(&"fail".to_owned()).is_err(), true);
+        assert_eq!(Trending::from_str(&"fail".to_owned()).is_err(), true);
     }
     #[test]
     fn fn_from_file() {

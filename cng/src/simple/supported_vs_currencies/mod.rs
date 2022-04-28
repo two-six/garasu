@@ -10,8 +10,8 @@ pub async fn fetch() -> Result<String, reqwest::Error> {
     Ok(body)
 }
 
-pub fn from_string(s: &String) -> Result<Vec<String>, Box<dyn(Error)>> {
+pub fn from_str(s: &str) -> Result<Vec<String>, Box<dyn(Error)>> {
     let reader = BufReader::new(s.as_bytes());
-    let u: Vec<String> = serde_json::from_reader(reader)?;
+    let u = serde_json::from_reader(reader)?;
     Ok(u)
 }
