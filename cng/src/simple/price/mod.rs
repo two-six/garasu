@@ -13,8 +13,8 @@ pub struct Parameters {
 
 fn bool_as_str<'a>(b: bool) -> &'a str {
     match b {
-        true => "true",
-        _    => "false"
+        true  => "true",
+        false => "false"
     }
 }
 
@@ -37,7 +37,7 @@ impl Parameters {
         }
     }
 
-    pub fn to_string(&self) -> String {
+    pub fn to_link(&self) -> String {
         let mut link                      = String::from("https://api.coingecko.com/api/v3/simple/price");
         let mut ids_s                     = String::from("?ids=");
         let mut vs_currencies_s           = String::from("&vs_currencies=");
@@ -66,7 +66,7 @@ impl Parameters {
 }
 
 pub async fn fetch(p: &Parameters) -> Result<String, reqwest::Error> {
-    let body = reqwest::get(p.to_string())
+    let body = reqwest::get(p.to_link())
         .await?
         .text()
         .await?;

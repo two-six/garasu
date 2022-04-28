@@ -7,8 +7,8 @@ async fn main() -> Result<(), reqwest::Error> {
     info!("Connecting to CoinGecko...");
     if ping.await.is_ok() {
         info!("Fetching data...");
-        let body = cng::Trending::fetch().await?;
-        for el in cng::Trending::from_str(&body).unwrap().coins {
+        let body = cng::trending::Trending::fetch().await?;
+        for el in cng::trending::Trending::from_str(&body).unwrap().coins {
             for v in el {
                 println!("{:.8} -> ₿ {:.8}", v.1.name, v.1.price_btc);
             }
